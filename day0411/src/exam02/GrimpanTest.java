@@ -14,7 +14,7 @@ class GrimpanPanel extends JPanel{
 		//super.paintComponent(g);
 		g.setColor(Color.red);
 		g.drawLine(10, 10, 100, 100);
-		g.drawOval(10, 10, 100, 100);
+		g.drawOval(20, 20, 100, 100);
 		
 		g.setColor(Color.blue);
 		g.drawOval(10, 10, 100, 100);
