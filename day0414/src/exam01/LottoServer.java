@@ -1,16 +1,48 @@
 package exam01;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.TreeSet;
+
 public class LottoServer {
 
 	public static void main(String[] args) {
 		try {
 			ServerSocket server = new ServerSocket(9000);
-			while(true ) {
+			System.out.println("**¼­¹ö°¡ °¡µ¿µÇ¾ú½À´Ï´Ù.");
+			while(true) {
+				Socket socket = server.accept();
+				InputStream is = socket.getInputStream();
+				OutputStream os = socket.getOutputStream();
+				Random r = new Random();
+				TreeSet<Integer> set = new TreeSet<Integer>();
+				while(true){
+					if(set.size() >=6) {
+						break;
+					}
+					set.add(r.nextInt(45)+1);
+				}
 				
+				//set¿¡ ´ã±ä µ¥ÀÌÅÍ¸¦ ¼ø¼­´ë·Î ÇÏ³ª¾¿ ²ôÁı¾î ³»¾î ¿Í¼­ 
+				//Å¬¶óÀÌ¾ğÆ®¿¡°Ô ³»º¸³½´Ù.
+				//setÀÇ ¿ä¼Ò¸¦ ÇÏ³ª¾¿ ²ôÁı¾î ³»¾î¿À·Á¸é Iterator·Î ¸¸µç´Ù.
+				Iterator<Integer> iter = set.iterator();
+				while(iter.hasNext()) {
+					int n = iter.next();
+					os.write(n);
+					Thread.sleep(200);
+				}
+				System.out.println("Å¬¶óÀÌ¾ğÆ®¿¡°Ô ·Î¶Ç ¹øÈ£¸¦ Àü¼ÛÇÏ¿´½À´Ï´Ù.");
+				os.close();
+				is.close();
+				socket.close();
 			}
-			
 		}catch(Exception e) {
-			System.out.println("ì˜ˆì™¸ë°œìƒ: "+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
 		}
 	}
 
