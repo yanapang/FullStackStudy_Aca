@@ -10,3 +10,5 @@ curriculum
 3. JSP
 4. HTML, CSS, JavaScript
 5. Spring, my Batis
+
+Lecture note : shorturl.at/rswT2
