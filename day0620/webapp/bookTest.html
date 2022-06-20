@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../jquery-ui-1.13.1.custom/jquery-ui.min.css">
+<link rel="stylesheet" href="../jquery.jqGrid-4.4.3/css/ui.jqgrid.css">
+<style type="text/css"></style>
+<script type="text/javascript" src="../jquery.jqGrid-4.4.3/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../jquery.jqGrid-4.4.3/js/i18n/grid.locale-en.js"></script>
+<script type="text/javascript" src="../jquery.jqGrid-4.4.3/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var delDlg = { //delete 버튼 눌렸을때 실행 될 함수
+			onclickSubmit: function(params){
+				var selectedRow = $("#goods").getGridParam("selrow");
+				//테이블에서 선택한 행 번호를 갖고옴
+				rowData = $("#goods").getRowData(selectedRow);
+				//그 행 번호에 해당하는 데이터를 갖고옴
+				return {bookid:rowData.bookid}
+				//서버로 선택된 행의 데이터(도서번호)를 전달
+			}
+		}
+		
+		$("#goods").jqGrid({
+			url:"/listBook", //데이터요청 위치, select에 대한 url임
+			editurl: "/updateBook", //데이터 수정에 대한 서비스 요청 주소
+			pager: "#pager", 
+			caption: "Books", //제목
+			height: "100%", //세로폭
+			rowNum:20, 
+			rowList:[10, 20, 30], //한번에 볼 rows 설정단위
+			colNames:["bookid", "bookname", "publisher", "price"],//열이름 지정
+			colModel: [//객체 형태로 설정해줘야함, 어떤 형태로 생성할지
+				{name: "bookid", index:"bookid", width:50, editable:true},
+				{name: "bookname", index:"bookname", width:300, editable:true},
+				{name: "publisher", index:"publisher", width:150, editable:true},
+				{name: "price", index:"price", width:100, editable:true}
+			]
+		}).navGrid("#pager", { //pager위치
+			search: true,
+			edit: true, 
+			add: true,
+			del: true
+		},{/*추가시 필요한 다이얼로그*/},{/*수정시 필요한 다이얼로그*/},delDlg/*삭제시 필요한 다이얼로그*/);
+	})
+</script>
+</head>
+<body>
+	<table id="goods"></table> <!-- 테이블 송출 위치 -->
+	<div id="pager"></div> <!-- 페이징 송출  위치 -->
+</body>
+</html>
