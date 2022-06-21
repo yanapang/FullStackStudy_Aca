@@ -2,15 +2,15 @@
 
 @Data
 public class EmpVO {
-	private int ENO;
-	private String ENAME;
-	private int DNO;            
-	private int SALARY;                                  
-	private int COMM;                                 
-	private Date HIREDATE;                               
-	private String PHONE;                                       
-	private String ADDR;                                              
-	private int MGR;                                              
-	private String JOB;               
-	private String EMAIL;                                          
+	private int ENO; //pk no
+	private String ENAME; //employee name
+	private int DNO; //department number
+	private int SALARY; //salary
+	private int COMM; //incentive bonus
+	private Date HIREDATE;
+	private String PHONE;
+	private String ADDR;
+	private int MGR; //manager's eno
+	private String JOB; //position
+	private String EMAIL;
 }
