@@ -1,5 +1,5 @@
-#FullStack Developer Program
-###sist_Academy, Seoul, Korea
+# FullStack Developer Program
+### sist_Academy, Seoul, Korea
 
 Full Stack Study
 
