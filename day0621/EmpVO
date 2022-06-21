@@ -1,0 +1,16 @@
+//VO for Employee data
+
+@Data
+public class EmpVO {
+	private int ENO;
+	private String ENAME;
+	private int DNO;            
+	private int SALARY;                                  
+	private int COMM;                                 
+	private Date HIREDATE;                               
+	private String PHONE;                                       
+	private String ADDR;                                              
+	private int MGR;                                              
+	private String JOB;               
+	private String EMAIL;                                          
+}
