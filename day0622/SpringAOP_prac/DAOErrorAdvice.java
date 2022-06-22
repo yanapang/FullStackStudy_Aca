@@ -8,6 +8,6 @@ public class DAOErrorAdvice {
 			throwing="ex")
 	public void afterError(JoinPoint joinPoint, Exception ex) {
 		String methodName = joinPoint.getSignature().toShortString();
-		System.out.println(methodName+"수행시 예외발생:"+ex.getMessage());
+		System.out.println("Method "+methodName+" returned Error:"+ex.getMessage());
 	}
 }
