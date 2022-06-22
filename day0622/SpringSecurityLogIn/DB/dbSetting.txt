@@ -1,0 +1,7 @@
+"db.Properties" file needed to run this code
+
+
+driver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:XE
+username=dbusername
+password=dbuserpwd
