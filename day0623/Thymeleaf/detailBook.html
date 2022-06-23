@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Detail Book</h2>
+	<hr>
+	<p>BookNo.: <span th:text="${book.bookid}"></span></p>
+	<p>BookTitle: <span th:text="${book.bookname}"></span></p>
+	<p>Price: <span th:text="${book.price}"></span></p>
+	<p>Publisher: <span th:text="${book.publisher}"></span></p>
+	<hr>
+	<a th:href="@{'/updateBook/'+${book.bookid}}" th:text="Update"></a>
+	<a th:href="@{'/deleteBook/'+${book.bookid}}" th:text="Delete"></a>
+</body>
+</html>
