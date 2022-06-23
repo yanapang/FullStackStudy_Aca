@@ -1,0 +1,17 @@
+@Repository
+public class BookDAO {
+
+	public List<BookVO> listBook() {
+		return BookManager.listBook();
+	}
+	public BookVO getBook(int bookid) {
+		return BookManager.getBook(bookid);
+	}
+	public int updateBook(BookVO b) {
+		return BookManager.updateBook(b);
+	}
+	public int deleteBook(int bookid) {
+		return BookManager.deleteBook(bookid);
+	}
+	
+}
