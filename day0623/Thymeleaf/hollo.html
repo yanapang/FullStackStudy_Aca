@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <!-- Thymeleaf using data transaction  -->
+	Name : <span th:text="${name}"></span><br>
+	Age : <span th:text="${age}"></span>
+	<hr>
+	<h2>List Of Fruits</h2>
+	<ul>
+		<li th:each="f:${list}">
+			<span th:text="${f}"></span>
+		</li>
+	</ul>
+</body>
+</html>
