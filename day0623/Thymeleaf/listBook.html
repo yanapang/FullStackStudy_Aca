@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btnNews").click(function(){
+			$.ajax({
+				url:"/news",
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+	})
+</script>
+</head>
+<body>
+
+	<h2>List Of Books</h2>
+	<hr>
+	<button id="btnNews">Check News/button>
+	<hr>	
+	<table border="1" width="80%">
+		<tr>
+			<th>BookNo.</th>
+			<th>BookTitle</th>
+		</tr>
+		<tr th:each="b:${list}">
+			<td th:text="${b.bookid}"></td>
+			<td>
+				<a th:href="@{'/detailBook/'+${b.bookid}}" th:text="${b.bookname}"></a>
+			</td>
+			<!-- <td th:text="${b.price}"></td>
+			<td th:text="${b.publisher}"></td> -->
+		</tr>
+	</table>
+	
+</body>
+</html>
