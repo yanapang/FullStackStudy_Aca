@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript">
+	Kakao.init("-- API KEY --");
+	function kakaoLogOut(){
+		Kakao.API.request({
+			url:"/v1/user/unlink", //user logout request url
+			success:function(){
+				alert("Logout from Kakao Account.");
+				location.href="/login.html"; //redirect to login page
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<div th:if="${session.name!=null}">
+		<p> Welcome, <span th:text="${session.name}"></span>.</p> //show login user name here
+		<a href="javascript:kakaoLogOut()">Logout</a> //logout link
+	</div>
+	
+	
+</body>
+</html>
