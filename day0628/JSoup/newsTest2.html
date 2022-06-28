@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#list{
+		list-style:none;
+	} 
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"/newsList",
+			success: function(arr){
+				$.each(arr, function(){
+					if(this.title != ""){
+						var li = $("<li></li>");
+						var a = $("<a></a>").html(this.title).attr("href",this.url);
+						$(li).append(a);
+						$("#list").append(li);
+					}
+				});
+			}
+		})
+		
+	})
+</script>
+</head>
+<body>
+	<!-- <button id="btnNews">Show Me News!</button>  -->
+	<ul id="list" ></ul>
+	
+</body>
+</html>
