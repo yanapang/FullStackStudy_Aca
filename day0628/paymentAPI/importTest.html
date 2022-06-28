@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript">
+function requestPay() {
+	IMP.init("--API KEY--");
+    // IMP.request_pay(param, callback) // call 
+    IMP.request_pay({ // param
+        pg: "kcp", 
+        pay_method: "card",
+        merchant_uid: "goods"+new Date().getTime(),
+        name: "Goods Name",
+        amount: 1,
+        buyer_email: "CUSTOMEREMAIL@gmail.com",
+        buyer_name: "CUSTOMERNAME",
+        buyer_tel: "CUSTOMERPHONE",
+        buyer_addr: "ADDR",
+        buyer_postcode: "POSTALCODE"
+    }, function (rsp) { // callback
+    	console.log(rsp);
+        if (rsp.success) {
+            // payment success,
+           alert("Payment Succeeded!");
+            var msg = "Payment Succeeded.";
+        	msg += 'Iamport ID'+rsp.imp_uid;
+        	msg += 'Merchant id'+rsp.merchant_uid;
+        	msg += 'Price:'+rsp.paid_amount;
+        	msg+= 'Authorization Num:'+rsp.apply_num;
+        } else {
+            // payment failed,
+            var msg = "Payment Failed.";
+            msg+= 'Error:'+rsp.error_msg;
+           alert(msg);
+           
+        }
+    });
+  }
+  
+  $(function(){
+	 $("#btnPay").click(function(){
+		 requestPay();
+	 }) 
+  });
+</script>
+</head>
+<body>
+	<button id="btnPay">Pay $1</button>
+</body>
+</html>
