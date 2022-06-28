@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btnRead").click(function(){
+			$.ajax({
+				url:"/newBookList", 
+				success: function(arr){
+					$.each(arr, function(){
+						$("#list").append($("<li></li>").html(this.title).attr("link", this.link));
+					})
+				}
+			})
+		});
+		
+		$(document).on("click","li",function(){
+			var base = "https://www.hanbit.co.kr";
+			var link = base + $(this).attr("link");
+			console.log(link);
+		})
+	});
+</script>
+
+</head>
+<body>
+
+	<ul id="list"></ul>
+	<hr>
+	<button id="btnRead">new Books List</button>
+</body>
+</html>
